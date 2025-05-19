@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <form class="hero-content">
+      <h2 class="heading">Household Expense Tracker</h2>
+      <div class="data">
+        <h3>Date</h3>
+        <h3>Desc.</h3>
+        <h3>Amount</h3>
+        <div class="content-wrapper"></div>
+      </div>
+      <div class="input-container">
+        <div class="input-group">
+          <label for="date" name="Date">Date</label
+          ><input class="input" id="date" type="date" required />
+        </div>
+        <div class="input-group">
+          <label for="description" name="Description">Description</label
+          ><input
+            class="input"
+            id="description"
+            type="text"
+            required
+            placeholder="Add Description"
+          />
+        </div>
+        <div class="input-group amount">
+          <label for="amount" name="Amount">Amount</label
+          ><input
+            class="input"
+            id="amount"
+            type="number"
+            required
+            placeholder="₹ Add Amount"
+          />
+        </div>
+      </div>
+      <div class="total">
+        <span>Grand Total</span><span class="grand-total">&#8377;0</span>
+      </div>
+      <div class="buttons">
+        <button id="import">Import</button>
+        <button id="menu">Menu</button>
+        <button id="submit" type="submit">Submit</button>
+      </div>
+    </form>
+    <script src="script.js" defer></script>
+  </body>
+</html>
