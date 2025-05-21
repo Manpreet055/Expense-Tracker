@@ -1,1 +1,293 @@
-:root{--radius:10px}body{background-color:#f1f1f1;height:100vh;display:flex;justify-content:center;align-items:center;margin:0;padding:0}*{box-sizing:border-box;font-family:poppins,sans-serif;transition:.3s all ease-in-out}.hero-content{width:100%;max-width:1000px;padding:20px;border-radius:var(--radius);box-shadow:0 5px 25px #d3d3d3;background-color:#f1f0f1;transition:.5s all ease-in-out;text-align:center}.input-container{display:grid;grid-template-columns:repeat(3,1fr);place-items:center;width:100%;gap:20px;padding-top:10px}.data{display:grid;grid-template-rows:50px 1fr;grid-template-columns:repeat(3,1fr) 35px 35px;place-items:center;height:550px;gap:10px}.buttons button,.input-group>input{background-color:#f8f8f8}.content-wrapper{grid-column:1/6;grid-row:2/3;width:100%;height:100%;display:grid;grid-template-columns:1fr;grid-auto-rows:35px;gap:10px;overflow:auto;scrollbar-width:none}.content{height:100%;width:100%;display:grid;place-items:center;grid-template-columns:repeat(3,1fr) 35px 35px;transition:.3s all ease-in-out}.content span{overflow-x:auto;height:100%;width:100%;place-content:center;font-size:1.1rem}.delete-button,.edit-button{display:flex;align-items:center;width:100%}.input-group{height:100%;width:100%;display:flex;gap:15px;flex-direction:column;place-items:center}.input-group>:first-child{font-size:18px;font-weight:600}.input{height:40px;padding-left:10px;width:100%;min-width:100px;border-radius:var(--radius);border:none;outline:0}#amount::before{content:"\20B9 "}.total{display:grid;grid-template-columns:repeat(2,1fr);place-items:center;width:100%;height:80px;font-weight:600;font-size:17px}.buttons{width:100%;display:flex;margin-bottom:20px;height:auto;flex-wrap:wrap;justify-content:center;align-items:end;gap:10px}.input:focus{border:1px solid #d3d3d3;background-color:#fff}.buttons button,.input{box-shadow:0 5px 15px #d3d3d3}.buttons button{border-radius:10px;border:#fff;font-size:1em;height:45px;flex-grow:1}.buttons button:hover{cursor:pointer;background-color:#f6f4f4}.buttons button:last-child{background-color:#2d62d4;border:none;color:#fff;font-weight:600}.buttons button:hover,.input:hover{transform:scale(1.04)}.buttons button:last-child:hover{background-color:#1b54b6}@media (max-width:1024px){.input-container{grid-template-columns:1fr 1fr 1fr}.input-group{width:90%}.hero-content{height:auto}}@media (max-width:768px){.input-container{grid-template-columns:1fr 1fr}.buttons button{width:300px;flex-grow:0}.amount{grid-column:1/3;justify-self:center}#amount{width:50%}.input-group>:first-child,.total{font-size:16px}.input-group{width:100%}.data{height:440px}}@media (max-width:480px){.hero-content{padding:5px}.data{max-height:340px}.content span{font-size:16px}}
+:root {
+  --radius: 10px;
+  --bgcolor: #f8f8f8;
+  --shadow: 0 5px 15px #d3d3d3;
+  --transform: scale(1.03);
+}
+body {
+  background-color: #f1f1f1;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.dark {
+  background-color: #161616;
+}
+.dark .hero-content {
+  background-color: #1c1c1c;
+  color: #909090;
+  box-shadow: none;
+}
+.dark .input {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background-color: #1a1a1a;
+  color: #e5e5e5;
+}
+.dark .input::placeholder {
+  color: #888;
+}
+.dark .input:focus {
+  background-color: #262626;
+  outline: 0;
+  border: 1px solid gray;
+}
+.dark #submit {
+  background-color: #2a52ff;
+  color: #fff;
+}
+.dark #submit:hover {
+  background-color: #1e3fff;
+  box-shadow: 0 0 10px rgba(42, 82, 255, 0.6);
+}
+.dark .buttons button {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background-color: #262626;
+  color: #d4d4d4;
+}
+.dark .buttons button:hover {
+  background-color: #333;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+.dark .menu-card {
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.dark .menu-card span:hover {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+.dark .delete-button,
+.edit-button {
+  color: #b0b0b0;
+}
+.dark .delete-button:hover,
+.edit-button:hover {
+  color: #fff;
+  transform: var(--transform);
+}
+* {
+  box-sizing: border-box;
+  font-family: poppins, sans-serif;
+  transition: 0.3s all ease-in-out;
+}
+.hero-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  height: 100vh;
+  box-shadow: var(--shadow);
+  background-color: #f1f0f1;
+  transition: 0.5s all ease-in-out;
+  text-align: center;
+}
+.input-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  width: 100%;
+  gap: 20px;
+  padding-top: 10px;
+}
+.data {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: repeat(3, 1fr) 35px 35px;
+  place-items: center;
+  height: 550px;
+  gap: 10px;
+}
+.buttons button,
+.input-group > input {
+  background-color: var(--bgcolor);
+}
+.menu-card {
+  height: 300px;
+  width: 250px;
+  border-radius: var(--radius);
+  background-color: var(--bgcolor);
+  box-shadow: var(--shadow);
+  display: none;
+  grid-template-rows: repeat(4, 1fr);
+  place-items: center;
+  position: absolute;
+  bottom: 125px;
+}
+.menu-card span i {
+  margin: 5px;
+}
+.menu-card span {
+  font-size: 1rem;
+  height: 100%;
+  width: 100%;
+  align-content: center;
+  font-weight: 600;
+}
+.content-wrapper {
+  grid-column: 1/6;
+  grid-row: 2/3;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 35px;
+  gap: 10px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.content {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr) 70px;
+  transition: 0.3s all ease-in-out;
+}
+.content span {
+  overflow-x: auto;
+  height: 100%;
+  width: 100%;
+  place-content: center;
+  font-size: 1.1rem;
+}
+.icon-wrapper {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+}
+.delete-button,
+.edit-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.input-group {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  place-items: center;
+}
+.input-group > :first-child {
+  font-size: 18px;
+  font-weight: 600;
+}
+.input {
+  height: 40px;
+  padding-left: 10px;
+  width: 100%;
+  min-width: 100px;
+  border-radius: var(--radius);
+  border: none;
+  outline: 0;
+}
+#amount::before {
+  content: "\20B9 ";
+}
+.total {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  width: 100%;
+  height: 80px;
+  font-weight: 600;
+  font-size: 17px;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: end;
+  gap: 10px;
+}
+.input:focus {
+  border: 1px solid #d3d3d3;
+  background-color: #fff;
+}
+.input:hover {
+  transform: var(--transform);
+}
+.buttons button,
+.input {
+  box-shadow: var(--shadow);
+}
+.buttons button {
+  border-radius: 10px;
+  border: #fff;
+  font-size: 1em;
+  height: 45px;
+  flex-grow: 1;
+}
+.buttons button:hover,
+.menu-card span:hover {
+  cursor: pointer;
+  background-color: #edebeb;
+  transform: var(--transform);
+}
+.buttons button:last-child {
+  background-color: #2d62d4;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+}
+.buttons button:last-child:hover {
+  background-color: #1b54b6;
+}
+@media (max-width: 1024px) {
+  .input-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .input-group {
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .input-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .buttons button {
+    width: 300px;
+    flex-grow: 0;
+  }
+  .amount {
+    grid-column: 1/3;
+    justify-self: center;
+  }
+  #amount {
+    width: 50%;
+  }
+  .input-group > :first-child,
+  .total {
+    font-size: 16px;
+  }
+  .input-group {
+    width: 100%;
+  }
+  .data {
+    height: 440px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 5px;
+  }
+  #import,
+  #menu {
+    width: 38%;
+  }
+  .data {
+    max-height: 340px;
+  }
+  .content span {
+    font-size: 16px;
+  }
+}
