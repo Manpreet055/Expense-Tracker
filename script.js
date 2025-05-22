@@ -9,11 +9,10 @@ let expenses = JSON.parse(localStorage.getItem("expense")) || [];
 let editingElement = null;
 let total = document.querySelector(".grand-total");
 let totalExpense = 0;
-let menuButton = document.querySelector("#menu");
+let menuButton = document.querySelector(".menu");
 let menuCard = document.querySelector(".menu-card");
 if (localStorage.getItem("Dark Mode") === "true") {
   document.body.classList.add("dark");
-  form.style.transition = "none";
   document.body.style.transition = "none";
   let darkModeButton = menuCard.querySelector(".dark-mode");
   if (darkModeButton) {
@@ -103,17 +102,20 @@ inputElements.forEach((input) => {
     }
   });
 });
-importButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  alert("This feature is coming soon..");
-});
-menuButton.addEventListener("click", (event) => {
-  event.preventDefault();
+menuButton.addEventListener("click", () => {
   menuCard.style.display = "grid";
+  setTimeout(() => {
+    menuCard.style.opacity = "1";
+    menuCard.style.transform = "translateX(0)";
+    },200)
 });
 document.addEventListener("click", (event) => {
   if (!menuButton.contains(event.target) && !menuCard.contains(event.target)) {
+    menuCard.style.opacity = "0.5";
+    menuCard.style.transform = "translateX(-250px)";
+    setTimeout(() => {
     menuCard.style.display = "none";
+    },200)
   }
 });
 function storageUpdate(clickedButton) {
