@@ -2,9 +2,8 @@ let date = document.querySelector("#date");
 let description = document.querySelector("#description");
 let amount = document.querySelector("#amount");
 let inputElements = document.querySelectorAll(".input");
-let form = document.querySelector(".hero-content");
+let form = document.querySelector(".expense-form");
 let contentWrapper = document.querySelector(".content-wrapper");
-let importButton = document.querySelector("#import");
 let expenses = JSON.parse(localStorage.getItem("expense")) || [];
 let editingElement = null;
 let total = document.querySelector(".grand-total");
@@ -107,15 +106,15 @@ menuButton.addEventListener("click", () => {
   setTimeout(() => {
     menuCard.style.opacity = "1";
     menuCard.style.transform = "translateX(0)";
-    },200)
+  }, 200);
 });
 document.addEventListener("click", (event) => {
   if (!menuButton.contains(event.target) && !menuCard.contains(event.target)) {
     menuCard.style.opacity = "0.5";
     menuCard.style.transform = "translateX(-250px)";
     setTimeout(() => {
-    menuCard.style.display = "none";
-    },200)
+      menuCard.style.display = "none";
+    }, 200);
   }
 });
 function storageUpdate(clickedButton) {
@@ -136,6 +135,7 @@ function storageUpdate(clickedButton) {
     clickedButton.remove();
   }, 200);
 }
+
 contentWrapper.addEventListener("click", (event) => {
   if (event.target.matches(".delete-button")) {
     if (!confirm("Do you really want to delete ??")) {
@@ -152,6 +152,8 @@ contentWrapper.addEventListener("click", (event) => {
     editingElement = clickedButton;
   }
 });
+
+//menu card eventlistner
 menuCard.addEventListener("click", (event) => {
   if (event.target.matches(".dark-mode")) {
     document.body.classList.toggle("dark");
@@ -164,3 +166,19 @@ menuCard.addEventListener("click", (event) => {
     localStorage.setItem("Dark Mode", document.body.classList.contains("dark"));
   }
 });
+
+// reset button event listner
+document.querySelector(".reset").addEventListener("click", () => {
+  if (expenses.length === 0 && contentWrapper.innerHTML.trim() === "") {
+    alert("List is already Empty !!");
+    return;
+  }
+  if (!confirm("Do you really want to Delete ?")) return;
+  contentWrapper.innerHTML = "";
+  expenses = [];
+  localStorage.setItem("expense", JSON.stringify(expenses));
+  alert("All expenses cleared successfully !!");
+});
+
+
+

@@ -16,7 +16,7 @@ body {
 .dark {
   background-color: #161616;
 }
-.dark .hero-content {
+.dark .expense-form {
   background-color: #1c1c1c;
   color: #909090;
   box-shadow: none;
@@ -37,6 +37,9 @@ body {
   outline: 0;
   border: 1px solid gray;
 }
+.dark input:not(:placeholder-shown){
+  background-color:#262626 ;
+}
 .dark #submit {
   background-color: #2a52ff;
   color: #fff;
@@ -49,7 +52,7 @@ body {
   background-color: #1a1a1a;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
-.dark .menu-card span:hover {
+.dark .menu-card span:hover,.dark #sorting:hover {
   background-color: #1e1e1e;
   color: #fff;
 }
@@ -67,10 +70,9 @@ body {
   font-family: poppins, sans-serif;
   transition: 0.3s all ease-in-out;
 }
-.hero-content {
+.expense-form {
   width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
+  padding: 0 50px;
   height: 100vh;
   box-shadow: var(--shadow);
   background-color: #f1f0f1;
@@ -94,8 +96,6 @@ body {
 }
 .heading{
   font-size: 1.7rem;
-  border-bottom:1px solid black ;
-  
 }
 .menu{
   height: 40px;
@@ -115,6 +115,26 @@ body {
 .input-group > input {
   background-color: var(--bgcolor);
 }
+#sorting {
+  width: 120px;
+  background: #f8f8f8;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1rem;
+  transition: 0.3s all;
+  font-weight: 600;
+}
+#sorting:focus{
+  outline: none;
+  border: none;
+}
+.dark #sorting {
+  background: none;
+  color: #909090;
+}
+.dark option{
+  background-color: #161616;
+}
 .menu-card {
   height: 100vh;
   width: 250px;
@@ -124,16 +144,17 @@ body {
   padding: 10px;
   grid-template-rows: repeat(7, 60px);
   place-items: center;
+  z-index: 100;
   position: absolute;
   top: 0;
   left: 0;
-  transform: translateX(-250px);
+  transform: translateX(-100%);
 }
 
 .menu-card span i {
   margin: 5px;
 }
-.menu-card span {
+.menu-card span{
   font-size: 1rem;
   height: 100%;
   width: 100%;
@@ -157,7 +178,7 @@ body {
   width: 100%;
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(3, 1fr) 70px;
+  grid-template-columns: repeat(3, 1fr) 80px;
   transition: 0.3s all ease-in-out;
 }
 .content span {
@@ -165,6 +186,7 @@ body {
   height: 100%;
   width: 100%;
   place-content: center;
+  scrollbar-width: none;
   font-size: 1.1rem;
 }
 .icon-wrapper {
@@ -193,9 +215,9 @@ body {
   font-weight: 600;
 }
 .input {
-  height: 40px;
+  height: 45px;
   padding-left: 10px;
-  width: 100%;
+  width: 80%;
   min-width: 100px;
   border-radius: var(--radius);
   border: none;
@@ -207,11 +229,13 @@ body {
 }
 .total {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
   place-items: center;
   width: 100%;
-  height: 80px;
+  height: auto;
+  row-gap: 20px;
   font-weight: 600;
+  margin-top: 50px;
   font-size: 17px;
 }
 
@@ -228,7 +252,7 @@ body {
   font-size: 1em;
   height: 45px;
 }
-.menu-card span:hover {
+.menu-card span:hover,#sorting:hover {
   cursor: pointer;
   background-color: #edebeb;
   transform: var(--transform);
@@ -238,6 +262,7 @@ body {
   border: none;
   color: #fff;
   font-weight: 600;
+  width: 300px;
 }
 #submit:hover {
   background-color: #1b54b6;
@@ -246,8 +271,17 @@ body {
   .input-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .expense-form{
+    padding:0px 20px ;
+  }
   .input-group {
     width: 90%;
+  }
+  .input{
+    width: 100%;
+  }
+  .total{
+    margin-top: 40px;
   }
 }
 @media (max-width: 768px) {
@@ -256,15 +290,27 @@ body {
   }
   #submit {
     width: 300px;
+    grid-column: 1/3;
   }
   .amount {
     grid-column: 1/3;
     justify-self: center;
     width: 50% !important;
   }
+  #total-heading{
+    place-self: start;
+    margin-left: 10px;
+  }
+  .grand-total{
+    place-self: end;
+    margin-right: 10px;
+  }
   .input-group > :first-child,
   .total {
     font-size: 16px;
+  }
+  .total{
+    width: 100%;
   }
   .input-group {
     width: 100%;
@@ -272,10 +318,18 @@ body {
   .data {
     height: 440px;
   }
+  .total{
+    margin-top: 30px;
+  }
+  
 }
 @media (max-width: 480px) {
-  .hero-content {
+  .expense-form {
     padding:0 10px;
+  }
+  .content{
+  grid-template-columns: 1fr 70px;
+
   }
   .content span {
     font-size: 16px;

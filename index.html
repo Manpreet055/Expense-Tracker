@@ -19,15 +19,23 @@
     />
   </head>
   <body>
-    <form class="hero-content">
+    <form class="expense-form">
       <header class="navbar">
         <div class="menu-card">
           <span class="dark-mode">Dark Mode <i class="fas fa-moon"></i></span>
-          <span class="sort">Sort List <i class="fas fa-sort"></i></span>
-          <span class="filter">Filter List <i class="fas fa-filter"></i></span>
-          <span class="download">Download PDF <i class="fas fa-download"></i></span>
-          <span class="share">Share <i class="fas fa-share"></i></span>
-          <span class="reset">Reset List<i class="fa-solid fa-rotate-left"></i></span>
+          <select name="Sorting" id="sorting">
+            <option value="sorting-heading" selected hidden>Sort List</option>
+            <option value="newest" class="newest">Newest</option>
+            <option value="oldest" class="oldest">Oldest</option>
+            <option value="high-amount" class="high-amount">High to Low</option>
+            <option value="low-amount" class="low-amount">Low to High</option>
+          </select>
+          <span class="download"
+            >Download PDF <i class="fas fa-download"></i
+          ></span>
+          <span class="reset"
+            >Reset List<i class="fa-solid fa-rotate-left"></i
+          ></span>
         </div>
         <button class="menu" type="button"><i class="fas fa-bars"></i></button>
         <h2 class="heading">Expense Tracker</h2>
@@ -65,9 +73,10 @@
         </div>
       </div>
       <div class="total">
-        <span>Grand Total</span><span class="grand-total">&#8377;0</span>
+        <span id="total-heading">Grand Total</span
+        ><span class="grand-total">&#8377;0</span>
+        <button id="submit" type="submit">Submit</button>
       </div>
-      <button id="submit" type="submit">Submit</button>
     </form>
     <script src="script.js" defer="defer"></script>
   </body>
