@@ -21,12 +21,13 @@ body {
   color: #909090;
   box-shadow: none;
 }
-.dark .input ,.dark .menu {
+.dark .input,
+.dark .menu {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   background-color: #1a1a1a;
   color: #e5e5e5;
 }
-.dark .menu{
+.dark .menu {
   color: #909090;
 }
 .dark .input::placeholder {
@@ -37,8 +38,8 @@ body {
   outline: 0;
   border: 1px solid gray;
 }
-.dark input:not(:placeholder-shown){
-  background-color:#262626 ;
+.dark input:not(:placeholder-shown) {
+  background-color: #262626;
 }
 .dark #submit {
   background-color: #2a52ff;
@@ -52,7 +53,8 @@ body {
   background-color: #1a1a1a;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
-.dark .menu-card span:hover,.dark #sorting:hover {
+.dark #sorting:hover,
+.dark .menu-card span:hover {
   background-color: #1e1e1e;
   color: #fff;
 }
@@ -87,30 +89,22 @@ body {
   gap: 20px;
   padding-top: 10px;
 }
-.navbar{
+.navbar {
   width: 100%;
   height: 80px;
   display: grid;
   grid-template-columns: 40px 1fr;
   place-items: center;
 }
-.heading{
+.heading {
   font-size: 1.7rem;
 }
-.menu{
+.menu {
   height: 40px;
   width: 40px;
   border: none;
   box-shadow: var(--shadow);
-  background: none;
-}
-.data {
-  display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-columns: repeat(3, 1fr) 35px 35px;
-  place-items: center;
-  height: 600px;
-  gap: 10px;
+  background: 0 0;
 }
 .input-group > input {
   background-color: var(--bgcolor);
@@ -124,15 +118,15 @@ body {
   transition: 0.3s all;
   font-weight: 600;
 }
-#sorting:focus{
-  outline: none;
+#sorting:focus {
+  outline: 0;
   border: none;
 }
 .dark #sorting {
-  background: none;
+  background: 0 0;
   color: #909090;
 }
-.dark option{
+.dark option {
   background-color: #161616;
 }
 .menu-card {
@@ -150,11 +144,10 @@ body {
   left: 0;
   transform: translateX(-100%);
 }
-
 .menu-card span i {
   margin: 5px;
 }
-.menu-card span{
+.menu-card span {
   font-size: 1rem;
   height: 100%;
   width: 100%;
@@ -163,22 +156,26 @@ body {
 }
 .content-wrapper {
   grid-column: 1/6;
-  grid-row: 2/3;
+  grid-row: 1/3;
   width: 100%;
-  height: 100%;
+  height: 600px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr) 80px;
   grid-auto-rows: 35px;
   gap: 10px;
   overflow: auto;
   scrollbar-width: none;
 }
+.content-wrapper h3 {
+  margin: 0;
+}
 .content {
+  grid-column: 1/5;
   height: 100%;
   width: 100%;
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(3, 1fr) 80px;
+  grid-template-columns: repeat(3, 1fr) 100px;
   transition: 0.3s all ease-in-out;
 }
 .content span {
@@ -214,6 +211,21 @@ body {
   font-size: 18px;
   font-weight: 600;
 }
+.clone {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 35px;
+  place-items: center;
+}
+.pdf-total {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  width: 100%;
+}
 .input {
   height: 45px;
   padding-left: 10px;
@@ -229,7 +241,7 @@ body {
 }
 .total {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   place-items: center;
   width: 100%;
   height: auto;
@@ -238,7 +250,6 @@ body {
   margin-top: 50px;
   font-size: 17px;
 }
-
 .input:focus {
   border: 1px solid #d3d3d3;
   background-color: #fff;
@@ -252,7 +263,8 @@ body {
   font-size: 1em;
   height: 45px;
 }
-.menu-card span:hover,#sorting:hover {
+#sorting:hover,
+.menu-card span:hover {
   cursor: pointer;
   background-color: #edebeb;
   transform: var(--transform);
@@ -271,16 +283,16 @@ body {
   .input-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  .expense-form{
-    padding:0px 20px ;
+  .expense-form {
+    padding: 0 20px;
   }
   .input-group {
     width: 90%;
   }
-  .input{
+  .input {
     width: 100%;
   }
-  .total{
+  .total {
     margin-top: 40px;
   }
 }
@@ -297,11 +309,11 @@ body {
     justify-self: center;
     width: 50% !important;
   }
-  #total-heading{
+  #total-heading {
     place-self: start;
     margin-left: 10px;
   }
-  .grand-total{
+  .grand-total {
     place-self: end;
     margin-right: 10px;
   }
@@ -309,27 +321,25 @@ body {
   .total {
     font-size: 16px;
   }
-  .total{
+  .total {
     width: 100%;
   }
   .input-group {
     width: 100%;
   }
   .data {
-    height: 440px;
+    height: 400px;
   }
-  .total{
+  .total {
     margin-top: 30px;
   }
-  
+  .content {
+    grid-template-columns: repeat(3, 1fr) 60px;
+  }
 }
 @media (max-width: 480px) {
   .expense-form {
-    padding:0 10px;
-  }
-  .content{
-  grid-template-columns: 1fr 70px;
-
+    padding: 0 10px;
   }
   .content span {
     font-size: 16px;

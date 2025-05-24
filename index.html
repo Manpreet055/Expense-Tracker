@@ -24,7 +24,9 @@
         <div class="menu-card">
           <span class="dark-mode">Dark Mode <i class="fas fa-moon"></i></span>
           <select name="Sorting" id="sorting">
-            <option value="sorting-heading" selected hidden>Sort List</option>
+            <option value="sorting-heading" selected="selected" hidden>
+              Sort List
+            </option>
             <option value="newest" class="newest">Newest</option>
             <option value="oldest" class="oldest">Oldest</option>
             <option value="high-amount" class="high-amount">High to Low</option>
@@ -40,11 +42,13 @@
         <button class="menu" type="button"><i class="fas fa-bars"></i></button>
         <h2 class="heading">Expense Tracker</h2>
       </header>
-      <div class="data">
-        <h3>Date</h3>
-        <h3>Desc.</h3>
-        <h3>Amount</h3>
-        <div class="content-wrapper"></div>
+      <div class="content-wrapper data">
+        <div class="content">
+          <h3>Date</h3>
+          <h3>Description</h3>
+          <h3>Amount</h3>
+          <div></div>
+        </div>
       </div>
       <div class="input-container">
         <div class="input-group">
@@ -78,6 +82,7 @@
         <button id="submit" type="submit">Submit</button>
       </div>
     </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js" defer="defer"></script>
   </body>
 </html>

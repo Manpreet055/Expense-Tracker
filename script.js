@@ -111,7 +111,7 @@ menuButton.addEventListener("click", () => {
 document.addEventListener("click", (event) => {
   if (!menuButton.contains(event.target) && !menuCard.contains(event.target)) {
     menuCard.style.opacity = "0.5";
-    menuCard.style.transform = "translateX(-250px)";
+    menuCard.style.transform = "translateX(-100%)";
     setTimeout(() => {
       menuCard.style.display = "none";
     }, 200);
@@ -135,7 +135,6 @@ function storageUpdate(clickedButton) {
     clickedButton.remove();
   }, 200);
 }
-
 contentWrapper.addEventListener("click", (event) => {
   if (event.target.matches(".delete-button")) {
     if (!confirm("Do you really want to delete ??")) {
@@ -152,9 +151,14 @@ contentWrapper.addEventListener("click", (event) => {
     editingElement = clickedButton;
   }
 });
-
-//menu card eventlistner
 menuCard.addEventListener("click", (event) => {
+  if (!event.target.matches("#sorting")) {
+    menuCard.style.opacity = "0.5";
+    menuCard.style.transform = "translateX(-100%)";
+    setTimeout(() => {
+      menuCard.style.display = "none";
+    }, 200);
+  }
   if (event.target.matches(".dark-mode")) {
     document.body.classList.toggle("dark");
     if (document.body.classList.contains("dark")) {
@@ -166,8 +170,6 @@ menuCard.addEventListener("click", (event) => {
     localStorage.setItem("Dark Mode", document.body.classList.contains("dark"));
   }
 });
-
-// reset button event listner
 document.querySelector(".reset").addEventListener("click", () => {
   if (expenses.length === 0 && contentWrapper.innerHTML.trim() === "") {
     alert("List is already Empty !!");
@@ -179,6 +181,51 @@ document.querySelector(".reset").addEventListener("click", () => {
   localStorage.setItem("expense", JSON.stringify(expenses));
   alert("All expenses cleared successfully !!");
 });
-
-
-
+function downloadPDF() {
+  const tempWrapper = document.createElement("div");
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let monthName = months[new Date().getMonth()];
+  const title = document.createElement("h2");
+  title.textContent = `Expense Report (${monthName})`;
+  title.style.textAlign = "center";
+  tempWrapper.appendChild(title);
+  let total = document.createElement("div");
+  total.className = "pdf-total";
+  total.innerHTML = `<div>Grand Total</div><div>₹ ${totalExpense}</div>`;
+  document.querySelectorAll(".content-wrapper .content").forEach((original) => {
+    const clone = original.cloneNode(true);
+    clone.className = "clone";
+    const icon = clone.querySelector(".icon-wrapper");
+    if (icon) icon.remove();
+    tempWrapper.appendChild(clone);
+  });
+  tempWrapper.appendChild(total);
+  tempWrapper.style.color = "black";
+  tempWrapper.style.backgroundColor = "white";
+  tempWrapper.style.padding = "20px";
+  tempWrapper.style.fontSize = "1rem";
+  /*global html2pdf*/
+  html2pdf()
+    .set({
+      filename: "Expense.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    })
+    .from(tempWrapper)
+    .save();
+}
+document.querySelector(".download").addEventListener("click", downloadPDF);
