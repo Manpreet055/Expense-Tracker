@@ -7,7 +7,7 @@
       name="description"
       content="A simple and intuitive household expense tracker to manage and monitor your daily expenses easily."
     />
-    <title>Expense Tracker</title>
+    <title>Contribution Tracker</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
@@ -17,15 +17,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <!-- <link rel="stylesheet" href="pdf_style.css"> -->
   </head>
   <body>
     <header class="navbar">
       <button class="menu" type="button"><i class="fas fa-bars"></i></button>
-      <h2 class="heading">Expense Tracker</h2>
+      <h2 class="heading">Contribution Tracker</h2>
       <div class="menu-card">
-        <a href="contribution.html" class="contribution"
-          >Contributions <i class="fas fa-donate"></i
+        <a href="index.html" class="contribution"   
+          >Expenses <i class="fas fa-wallet"></i
         ></a>
         <span class="dark-mode">Dark Mode <i class="fas fa-moon"></i></span>
         <select name="Sorting" id="sorting">
@@ -45,11 +44,11 @@
         ></span>
       </div>
     </header>
-    <form class="expense-form">
+    <form class="expense-form contribution-form">
       <div class="content-wrapper data">
         <div class="content">
           <h3>Date</h3>
-          <h3>Description</h3>
+          <h3>Contributions</h3>
           <h3>Amount</h3>
           <div></div>
         </div>
@@ -60,13 +59,13 @@
           ><input class="input" id="date" type="date" required />
         </div>
         <div class="input-group">
-          <label for="description">Description</label
+          <label for="description">Contributor</label
           ><input
             class="input"
             id="description"
             type="text"
             required
-            placeholder="Add Description"
+            placeholder="Add contributor"
           />
         </div>
         <div class="input-group amount">
@@ -81,7 +80,7 @@
         </div>
       </div>
       <div class="total">
-        <span id="total-heading">Grand Total</span
+        <span id="total-heading">Total Income</span
         ><span class="grand-total">&#8377;0</span>
         <button id="submit" type="submit">Submit</button>
       </div>
@@ -90,4 +89,3 @@
     <script src="script.js" defer="defer"></script>
   </body>
 </html>
-<h2>Date</h2><h2>Source</h2><h2>Amount</h2>
