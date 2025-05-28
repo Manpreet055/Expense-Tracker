@@ -9,6 +9,7 @@
     />
     <title>Expense Tracker</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="pdf_style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
@@ -17,7 +18,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <!-- <link rel="stylesheet" href="pdf_style.css"> -->
   </head>
   <body>
     <header class="navbar">
@@ -29,7 +29,12 @@
         ></a>
         <span class="dark-mode">Dark Mode <i class="fas fa-moon"></i></span>
         <select name="Sorting" id="sorting">
-          <option value="sorting-heading" selected disabled hidden>
+          <option
+            value="sorting-heading"
+            selected="selected"
+            disabled="disabled"
+            hidden
+          >
             Sort List
           </option>
           <option value="newest" class="newest">Newest</option>
@@ -88,6 +93,7 @@
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js" defer="defer"></script>
-  </body>
+    <script src="savePDF.js" defer="defer"></script>
+    <!-- <script src="sorting.js" defer></script> -->
+  </body> 
 </html>
-<h2>Date</h2><h2>Source</h2><h2>Amount</h2>

@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="A simple and intuitive household expense tracker to manage and monitor your daily expenses easily."
+      content="A simple and intuitive contribution tracker to record and manage individual contributions easily"
     />
     <title>Contribution Tracker</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="pdf_style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
@@ -23,7 +24,7 @@
       <button class="menu" type="button"><i class="fas fa-bars"></i></button>
       <h2 class="heading">Contribution Tracker</h2>
       <div class="menu-card">
-        <a href="index.html" class="contribution"   
+        <a href="index.html" class="contribution"
           >Expenses <i class="fas fa-wallet"></i
         ></a>
         <span class="dark-mode">Dark Mode <i class="fas fa-moon"></i></span>
@@ -87,5 +88,6 @@
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js" defer="defer"></script>
+    <script src="savePDF.js" defer></script>
   </body>
 </html>
