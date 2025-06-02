@@ -56,6 +56,7 @@ body {
 }
 .input-group > input {
   background-color: var(--bgcolor);
+  transition: 0.3s all;
 }
 #sort-dropdown {
   width: 150px;
@@ -101,6 +102,7 @@ body {
 .menu-card a {
   all: unset;
   cursor: pointer;
+  transition: 0.3s all ease-in-out;
 }
 .menu-card a,
 .menu-card button {
@@ -112,6 +114,7 @@ body {
   align-content: center;
   width: 100%;
   font-weight: 600;
+  transition: 0.3s all ease-in-out;
 }
 .content-wrapper {
   grid-column: 1/6;
@@ -157,6 +160,11 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
+  transition: 0.3s all ease-in-out;
+}
+.delete-button:hover,.edit-button:hover{
+  color: rgb(96, 93, 93);
+  transform: scale(1.03);
 }
 .input-group {
   height: 100%;
@@ -203,6 +211,7 @@ body {
   border: #fff;
   font-size: 1em;
   height: 45px;
+  transition: 0.2s all ease-in-out;
 }
 #sort-dropdown:hover,
 .menu-card a:hover,
