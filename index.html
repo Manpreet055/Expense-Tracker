@@ -1,1 +1,60 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A simple and intuitive household expense tracker to manage and monitor your daily expenses easily."><title>Expense Tracker</title><link rel="stylesheet" href="styles/style.css"><link rel="stylesheet" href="styles/dark.css"><link rel="stylesheet" href="styles/responsive.css"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></head><body><header class="navbar"><button class="menu" type="button"><i class="fas fa-bars"></i></button><h2 class="heading">Expense Tracker</h2><div class="menu-card"><a href="contribution.html" class="contribution">Contributions <i class="fas fa-donate"></i></a> <button class="dark-mode" aria-label="Toggle dark mode">Dark Mode <i class="fas fa-moon" aria-hidden="true"></i></button> <select name="Sorting" id="sort-dropdown"><option value="sorting-heading" selected="selected" disabled="disabled" hidden>Sort List</option><option value="newest" class="newest">Newest</option><option value="oldest" class="oldest">Oldest</option><option value="high-amount" class="high-amount">High to Low</option><option value="low-amount" class="low-amount">Low to High</option></select> <button class="download">Download PDF <i class="fas fa-download"></i></button> <button class="reset">Reset List<i class="fa-solid fa-rotate-left"></i></button> <a href="https://drive.google.com/file/d/1IruHHDc9NCByeHM3YqA1W3XXbRYcEi0o/view?usp=drive_link">Get the App</a></div></header><form class="record-form"><div class="content-wrapper data"><div class="content"><h3>Date</h3><h3>Descriptions</h3><h3>Amount</h3><div></div></div></div><div class="input-container"><div class="input-group"><label for="date">Date</label><input class="input-date input" id="date" type="date" required></div><div class="input-group amount"><label for="amount">Amount</label><input class="input-amount input" id="amount" type="number" required placeholder="₹ Add Amount"></div><div class="input-group description"><label for="description">Description</label><input class="input-desc input" id="description" type="text" required placeholder="Add Description"></div></div><div class="total-section"><span id="total-heading">Grand Total</span><span class="grand-total">&#8377;0</span> <button id="submit-button" type="submit">Submit</button></div></form><footer><script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script><script type="module" src="scripts/script.js"></script><script type="module" src="scripts/components.js"></script></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description"
+        content="A simple and intuitive household expense tracker to manage and monitor your daily expenses easily.">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/dark.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar"><button class="menu" type="button"><i class="fas fa-bars"></i></button>
+        <h2 class="heading">Expense Tracker</h2>
+        <div class="menu-card"><a href="contribution.html" class="contribution">Contributions <i
+                    class="fas fa-donate"></i></a> <button class="dark-mode" aria-label="Toggle dark mode">Dark Mode <i
+                    class="fas fa-moon" aria-hidden="true"></i></button> <select name="Sorting" id="sort-dropdown">
+                <option value="sorting-heading" selected="selected" disabled="disabled" hidden>Sort List</option>
+                <option value="newest" class="newest">Newest</option>
+                <option value="oldest" class="oldest">Oldest</option>
+                <option value="high-amount" class="high-amount">High to Low</option>
+                <option value="low-amount" class="low-amount">Low to High</option>
+            </select> <button class="download">Download PDF <i class="fas fa-download"></i></button> <button
+                class="reset">Reset List<i class="fa-solid fa-rotate-left"></i></button> <a
+                href="https://drive.google.com/file/d/1IruHHDc9NCByeHM3YqA1W3XXbRYcEi0o/view?usp=drive_link">Get the
+                App</a></div>
+    </header>
+    <form class="record-form">
+        <div class="content-wrapper data">
+            <div class="content">
+                <h3>Date</h3>
+                <h3>Descriptions</h3>
+                <h3>Amount</h3>
+                <div></div>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="input-group"><label for="date">Date</label><input class="input-date input" id="date" type="date"
+                    required></div>
+            <div class="input-group amount"><label for="amount">Amount</label><input class="input-amount input"
+                    id="amount" type="number" required placeholder="₹ Add Amount"></div>
+            <div class="input-group description"><label for="description">Description</label><input
+                    class="input-desc input" id="description" type="text" required placeholder="Add Description"></div>
+        </div>
+        <div class="total-section"><span id="total-heading">Grand Total</span><span class="grand-total">&#8377;0</span>
+            <button id="submit-button" type="submit">Submit</button></div>
+    </form>
+    <footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <script type="module" src="scripts/script.js"></script>
+        <script type="module" src="scripts/components.js"></script>
+    </footer>
+</body>
+
+</html>
