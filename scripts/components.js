@@ -1,1 +1,90 @@
-import{showData,capitalize}from"./script.js";let content=document.querySelector(".content-wrapper");function createPdf(storage,page){let pdfContent=document.createElement("div");pdfContent.className="pdf-content";let total=0;pdfContent.innerHTML=`<h3 class="pdf-heading">${page}</h3><h3>Date</h3><h3>${page}</h3><h3>Amount</h3>`;storage.forEach((data=>{let dateSpan=document.createElement("span");dateSpan.textContent=data.date;pdfContent.appendChild(dateSpan);let descriptionSpan=document.createElement("span");descriptionSpan.textContent=capitalize(data.description);pdfContent.appendChild(descriptionSpan);let amountSpan=document.createElement("span");amountSpan.textContent=data.amount;pdfContent.appendChild(amountSpan);total+=Number(data.amount)}));let totalRecords=document.createElement("div");totalRecords.className="total-records";totalRecords.innerHTML=`<h3>Total</h3><h3>&#8377; ${total}</h3>`;pdfContent.appendChild(totalRecords);return pdfContent}function downloadPdf(){let pdfPage=document.createElement("div");pdfPage.className="pdf-page";const months=["January","February","March","April","May","June","July","August","September","October","November","December"];let date=(new Date).getMonth();let monthName=months[date];pdfPage.innerHTML=`<h1 style="color: black;">Monthly Report (${monthName})</h1>`;let contributionData=JSON.parse(localStorage.getItem("Contributions")||"[]");pdfPage.appendChild(createPdf(contributionData,"Contributions"));let expenseData=JSON.parse(localStorage.getItem("Expenses")||"[]");pdfPage.appendChild(createPdf(expenseData,"Expenses"));html2pdf().set({filename:"Monthly_Report.pdf",image:{type:"jpeg",quality:.98},html2canvas:{scale:2},jsPDF:{unit:"in",format:"letter",orientation:"portrait"}}).from(pdfPage).save()}document.querySelector(".download").addEventListener("click",downloadPdf);export function sortList(sortingType){content.innerHTML=renderContentHeader();let currentTitle=document.querySelector("title").textContent;let key=currentTitle==="Contribution Tracker"?"Contributions":"Expenses";let records=JSON.parse(localStorage.getItem(key))||[];if(sortingType==="newest"){records=records.sort(((a,b)=>new Date(b.date)-new Date(a.date)))}else if(sortingType==="oldest"){records=records.sort(((a,b)=>new Date(a.date)-new Date(b.date)))}else if(sortingType==="high-amount"){records=records.sort(((a,b)=>b.amount-a.amount))}else if(sortingType=="low-amount"){records=records.sort(((a,b)=>a.amount-b.amount))}records.forEach((record=>{showData(record)}));localStorage.setItem(key,JSON.stringify(records))}export function renderContentHeader(){let pageName=document.body.dataset.page;if(pageName==="Contribution"){return` <div class="content"><h3>Date</h3><h3>Contributions</h3><h3>Amount</h3><div></div>`}else{return` <div class="content"><h3>Date</h3><h3>Descriptions</h3><h3>Amount</h3><div></div>`}}
+import { showData, capitalize } from "./script.js";
+let content = document.querySelector(".content-wrapper");
+function createPdf(storage, page) {
+  let pdfContent = document.createElement("div");
+  pdfContent.className = "pdf-content";
+  let total = 0;
+  pdfContent.innerHTML = `<h3 class="pdf-heading">${page}</h3><h3>Date</h3><h3>${page}</h3><h3>Amount</h3>`;
+  storage.forEach((data) => {
+    let dateSpan = document.createElement("span");
+    dateSpan.textContent = data.date;
+    pdfContent.appendChild(dateSpan);
+    let descriptionSpan = document.createElement("span");
+    descriptionSpan.textContent = capitalize(data.description);
+    pdfContent.appendChild(descriptionSpan);
+    let amountSpan = document.createElement("span");
+    amountSpan.textContent = data.amount;
+    pdfContent.appendChild(amountSpan);
+    total += Number(data.amount);
+  });
+  let totalRecords = document.createElement("div");
+  totalRecords.className = "total-records";
+  totalRecords.innerHTML = `<h3>Total</h3><h3>&#8377; ${total}</h3>`;
+  pdfContent.appendChild(totalRecords);
+  return pdfContent;
+}
+function downloadPdf() {
+  let pdfPage = document.createElement("div");
+  pdfPage.className = "pdf-page";
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let date = new Date().getMonth();
+  let monthName = months[date];
+  pdfPage.innerHTML = `<h1 style="color: black;">Monthly Report (${monthName})</h1>`;
+  let contributionData = JSON.parse(
+    localStorage.getItem("Contributions") || "[]"
+  );
+  pdfPage.appendChild(createPdf(contributionData, "Contributions"));
+  let expenseData = JSON.parse(localStorage.getItem("Expenses") || "[]");
+  pdfPage.appendChild(createPdf(expenseData, "Expenses"));
+  html2pdf()
+    .set({
+      filename: "Monthly_Report.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    })
+    .from(pdfPage)
+    .save();
+}
+document.querySelector(".download").addEventListener("click", downloadPdf);
+export function sortList(sortingType) {
+  content.innerHTML = renderContentHeader();
+  let currentTitle = document.querySelector("title").textContent;
+  let key =
+    currentTitle === "Contribution Tracker" ? "Contributions" : "Expenses";
+  let records = JSON.parse(localStorage.getItem(key)) || [];
+  if (sortingType === "newest") {
+    records = records.sort((a, b) => new Date(b.date) - new Date(a.date));
+  } else if (sortingType === "oldest") {
+    records = records.sort((a, b) => new Date(a.date) - new Date(b.date));
+  } else if (sortingType === "high-amount") {
+    records = records.sort((a, b) => b.amount - a.amount);
+  } else if (sortingType == "low-amount") {
+    records = records.sort((a, b) => a.amount - b.amount);
+  }
+  records.forEach((record) => {
+    showData(record);
+  });
+  localStorage.setItem(key, JSON.stringify(records));
+}
+export function renderContentHeader() {
+  let pageName = document.body.dataset.page;
+  if (pageName === "Contribution") {
+    return ` <div class="content"><h3>Date</h3><h3>Contributions</h3><h3>Amount</h3><div></div>`;
+  } else {
+    return ` <div class="content"><h3>Date</h3><h3>Descriptions</h3><h3>Amount</h3><div></div>`;
+  }
+}
