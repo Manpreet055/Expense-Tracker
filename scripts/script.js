@@ -45,7 +45,7 @@ function showData(record) {
   descriptionSpan.textContent = capitalize(record.description);
   content.appendChild(descriptionSpan);
   let amount = document.createElement("span");
-  amount.textContent = "AED" + record.amount;
+  amount.textContent = "AED" + " " + record.amount;
   content.appendChild(amount);
   let iconWrapper = document.createElement("div");
   iconWrapper.className = "icon-wrapper";
@@ -58,7 +58,7 @@ function showData(record) {
   content.appendChild(iconWrapper);
   contentWrapper.appendChild(content);
   totalExpense += Number(record.amount);
-  total.textContent = `AED ${totalExpense} `;
+  total.textContent = `AED : ${totalExpense} `;
 }
 function submitForm(event) {
   event.preventDefault();
@@ -93,7 +93,7 @@ function submitForm(event) {
     showData(formdata);
     records.push(formdata);
   }
-  total.textContent = `₹ ${totalExpense}`;
+  total.textContent = `₹ Dhs ${" "}{totalExpense}`;
   localStorage.setItem(localStorageKey, JSON.stringify(records));
   form.reset();
 }
@@ -129,7 +129,7 @@ function storageUpdate(clickedButton) {
       )
   );
   totalExpense -= Number(clickedButton.dataset.amount);
-  total.textContent = `₹ ${totalExpense}`;
+  total.textContent = `Dhs. ${" "}${totalExpense}`;
   clickedButton.style.opacity = "0.5";
   clickedButton.style.transform = "translatex(-200px)";
   setTimeout(() => {
