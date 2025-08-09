@@ -45,7 +45,7 @@ function showData(record) {
   descriptionSpan.textContent = capitalize(record.description);
   content.appendChild(descriptionSpan);
   let amount = document.createElement("span");
-  amount.textContent = "₹" + record.amount;
+  amount.textContent = "AED" + record.amount;
   content.appendChild(amount);
   let iconWrapper = document.createElement("div");
   iconWrapper.className = "icon-wrapper";
@@ -58,7 +58,7 @@ function showData(record) {
   content.appendChild(iconWrapper);
   contentWrapper.appendChild(content);
   totalExpense += Number(record.amount);
-  total.textContent = `₹ ${totalExpense} `;
+  total.textContent = `AED ${totalExpense} `;
 }
 function submitForm(event) {
   event.preventDefault();
